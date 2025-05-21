@@ -1,0 +1,42 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Login | SHUROV HACKER</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="auth-container">
+        <h2>Login</h2>
+        <form onsubmit="login(event)">
+            <label>Username</label>
+            <input type="text" id="login-username" required />
+            <label>Password</label>
+            <input type="password" id="login-password" required />
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="signup.html">Signup here</a></p>
+    </div>
+
+    <script>
+        function login(e) {
+            e.preventDefault();
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+            const user = JSON.parse(localStorage.getItem('user'));
+
+            if (user && user.username === username && user.password === password) {
+                localStorage.setItem('loggedIn', 'true');
+                alert('Login successful!');
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Invalid credentials!');
+            }
+        }
+    </script>
+</body>
+
+</html>
