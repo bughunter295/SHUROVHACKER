@@ -3,57 +3,161 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>💀 SHUROV HACKER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shurov | Cyber Security Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+   
     <header>
-        <h1>💀 SHUROV HACKER 💀</h1>
-        <p class="subtitle">"Cyber Warrior | Bug Bounty Hunter | Future Legend"</p>
+        <h1>💀 SUROV HACKER 💀</h1>
+        <h1 class="typing"></h1>
+        <p class="subtitle">Cyber Security Enthusiast | Bug Bounty Hunter | Future Legend</p>
+
+        <!-- 🔥 Navbar -->
+        <nav id="navbar">
+            <!-- This will be replaced by JS -->
+        </nav>
     </header>
 
-    <section class="about">
-        <h2>👨‍💻 About Me</h2>
-        <p>
-            I'm <span class="highlight">SHUROV</span>, a passionate cyber security enthusiast and bug bounty hunter. I
-            love exploring vulnerabilities, learning offensive techniques, and protecting digital worlds. This site is
-            my little hacker den.
-        </p>
-    </section>
+    <main>
+        <section id="about" class="section-container">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm <span class="highlight">Surov</span>, a passionate Cyber Security Specialist and Bug Bounty
+                Hunter. I
+                love exploring vulnerabilities and securing digital assets.
+            </p>
+        </section>
 
-    <section class="tools">
-        <h2>🧰 Tools I Use</h2>
-        <div class="grid">
-            <div>Burp Suite</div>
-            <div>Nmap</div>
-            <div>SQLmap</div>
-            <div>Hydra</div>
-            <div>Wireshark</div>
-            <div>Metasploit</div>
-            <div>Dirb</div>
-            <div>Sublist3r</div>
-            <div>Gobuster</div>
-            <div>John the Ripper</div>
-            <div>Aircrack-ng</div>
-            <div>Netcat</div>
-        </div>
-    </section>
+        <section id="skills" class="section-container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <p>Penetration Testing</p>
+                    <div class="progress-bar">
+                        <div style="width: 95%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p>Web Security</p>
+                    <div class="progress-bar">
+                        <div style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p>Python Scripting</p>
+                    <div class="progress-bar">
+                        <div style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p>Bug Hunting</p>
+                    <div class="progress-bar">
+                        <div style="width: 88%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="terminal">
-        <h2>💣 Live Hacking Console</h2>
-        <p>> Ready to attack target...</p>
-        <button onclick="hack()">Launch Attack</button>
-        <div id="output"></div>
-    </section>
+        <section id="projects" class="section-container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Vulnerability Scanner</h3>
+                    <p>A Python tool to scan web apps for common vulnerabilities like XSS, SQLi, and more.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Wi-Fi Attack Toolkit</h3>
+                    <p>A toolkit including WPA handshake capture, DNS spoofing, and captive portal features.</p>
+                </div>
+                <div class="project-card">
+                    <h3>MiniBurp Proxy</h3>
+                    <p>A lightweight intercepting proxy inspired by Burp Suite, built in Python.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-container">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:zshackerpro@gmail.com" class="highlight">zshackerpro@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/bughunter295" target="_blank" class="highlight">bughunter295</a></p>
+            <p>FaceBook: <a href="https://www.facebook.com/MDSHUROV295/" target="_blank" class="highlight">MD SUROV</a></p>
+        </section>
+
+        <section id="comment-box" class="section-container">
+            <h2>Comment Us</h2>
+            <form id="commentForm">
+                <input type="text" name="name" placeholder="Your Name" required><br>
+                <textarea name="message" placeholder="Your Comment" required></textarea><br>
+                <button type="submit">Send Comment</button>
+            </form>
+            <p id="commentStatus"></p>
+        </section>
+        
+    </main>
 
     <footer>
-        <p>MY Github Link : <a href="https://github.com/bughunter295" target="_blank">GitHub</a></p>
-        <p>MY FaceBook Link : <a href="https://www.facebook.com/MDSHUROV295" target="_blank">FaceBook</a></p>
+        <p>I AM SHUROV</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const navbar = document.getElementById("navbar");
+        const user = JSON.parse(localStorage.getItem("user"));
+        const loggedIn = localStorage.getItem("loggedIn");
+
+        if (loggedIn && user) {
+            navbar.innerHTML = `
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <span style="color:#0ff;font-weight:bold;">👤 ${user.username}</span>
+                <a href="#" onclick="logout()" class="highlight">Logout</a>
+            `;
+        } else {
+            navbar.innerHTML = `
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="login.html" class="highlight">Login</a>
+                <a href="signup.html" class="highlight">Signup</a>
+            `;
+        }
+
+        function logout() {
+            const user = JSON.parse(localStorage.getItem("user"));
+            const username = user?.username || "User";
+
+            localStorage.removeItem("user");
+            localStorage.removeItem("loggedIn");
+
+            alert(`👋 Goodbye, ${username}!`);
+            window.location.href = "index.html";
+        }
+
+        document.getElementById("commentForm").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const name = this.name.value;
+                const message = this.message.value;
+                const time = new Date().toLocaleString();
+
+                emailjs.send("service_drjh48n", "template_2iwx0mj", {
+                    name,
+                    message,
+                    time
+                }).then(function () {
+                    document.getElementById("commentStatus").textContent = "✅ Comment sent successfully!";
+                    document.getElementById("commentForm").reset();
+                }, function (error) {
+                    document.getElementById("commentStatus").textContent = "❌ Failed to send comment: " + error.text;
+                });
+            });
+    </script>
 </body>
 
 </html>
