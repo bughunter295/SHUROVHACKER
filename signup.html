@@ -1,0 +1,36 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Signup | SHUROV HACKER</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="auth-container">
+        <h2>Signup</h2>
+        <form onsubmit="signup(event)">
+            <label>Username</label>
+            <input type="text" id="signup-username" required />
+            <label>Password</label>
+            <input type="password" id="signup-password" required />
+            <button type="submit">Create Account</button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </div>
+
+    <script>
+        function signup(e) {
+            e.preventDefault();
+            const username = document.getElementById('signup-username').value;
+            const password = document.getElementById('signup-password').value;
+            localStorage.setItem('user', JSON.stringify({ username, password }));
+            alert('Account created! You can login now.');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+
+</html>
