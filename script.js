@@ -1,42 +1,25 @@
-function hack() {
-    const output = document.getElementById("output");
-    output.innerHTML = "";
-    
-    const lines = [
-      "[*] Connecting to remote server...",
-      "[*] Bypassing firewall...",
-      "[*] Escalating privileges...",
-      "[+] Root access granted!",
-      "[*] Injecting payload...",
-      "[+] Payload deployed successfully.",
-      "[*] Accessing system files...",
-      "[+] Found admin credentials!",
-      "[+] Downloading database...",
-      "[+] Hack complete! 💀 SYSTEM PWNED!"
-    ];
-  
-    let index = 0;
-  
-    const typing = setInterval(() => {
-      if (index < lines.length) {
-        typeLine(lines[index], output, () => index++);
-      } else {
-        clearInterval(typing);
-      }
-    }, 1500);
+// Typing animation for header title
+const text = "SUROV — CYBER SECURITY SPECIALIST";
+const typingElement = document.querySelector(".typing");
+let index = 0;
+
+function typeWriter() {
+  if (index < text.length) {
+    typingElement.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, 100);
   }
-  
-  function typeLine(text, element, callback) {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-      } else {
-        element.innerHTML += "<br>";
-        clearInterval(interval);
-        callback();
-      }
-    }, 30);
-  }
-  
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  typeWriter();
+
+  // Animate progress bars after a short delay
+  const progressBars = document.querySelectorAll(".progress-bar > div");
+  setTimeout(() => {
+    progressBars.forEach(bar => {
+      const width = bar.style.width;
+      bar.style.width = width; // triggers transition for any preset widths
+    });
+  }, 1500);
+});
