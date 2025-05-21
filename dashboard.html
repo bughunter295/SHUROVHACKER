@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shurov | Cyber Security Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("iWEtA4abrXyCskqeE"); // Replace with your actual public key
+        })();
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1 class="typing"></h1>
+        <p class="subtitle">Cyber Security Enthusiast | Bug Bounty Hunter | Future Legend</p>
+
+        <!-- 🔥 Navbar -->
+        <nav id="navbar">
+            <!-- This will be replaced by JS -->
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="section-container">
+            <h2>About Me</h2>
+            <p>
+                Hi, I'm <span class="highlight">Surov</span>, a passionate Cyber Security Specialist and Bug Bounty
+                Hunter. I love exploring vulnerabilities and securing digital assets.
+            </p>
+        </section>
+
+        <section id="skills" class="section-container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill">
+                    <p>Penetration Testing</p>
+                    <div class="progress-bar">
+                        <div style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p>Web Security</p>
+                    <div class="progress-bar">
+                        <div style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p>Python Scripting</p>
+                    <div class="progress-bar">
+                        <div style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <p>Bug Hunting</p>
+                    <div class="progress-bar">
+                        <div style="width: 88%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Vulnerability Scanner</h3>
+                    <p>A Python tool to scan web apps for common vulnerabilities like XSS, SQLi, and more.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Wi-Fi Attack Toolkit</h3>
+                    <p>A toolkit including WPA handshake capture, DNS spoofing, and captive portal features.</p>
+                </div>
+                <div class="project-card">
+                    <h3>MiniBurp Proxy</h3>
+                    <p>A lightweight intercepting proxy inspired by Burp Suite, built in Python.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-container">
+            <h2>Contact Me</h2>
+            <p>Email: <a href="mailto:zshackerpro@gmail.com" class="highlight">zshackerpro@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/bughunter295" target="_blank" class="highlight">bughunter295</a></p>
+            <p>FaceBook: <a href="https://www.facebook.com/MDSHUROV295/" target="_blank" class="highlight">MD SUROV</a>
+            </p>
+        </section>
+
+        <section id="comment-box" class="section-container">
+            <h2>Comment Us</h2>
+            <form id="commentForm">
+                <input type="text" name="name" placeholder="Your Name" required><br>
+                <textarea name="message" placeholder="Your Comment" required></textarea><br>
+                <button type="submit">Send Comment</button>
+            </form>
+            <p id="commentStatus"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>I AM SHUROV</p>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById("navbar");
+        const user = JSON.parse(localStorage.getItem("user"));
+        const loggedIn = localStorage.getItem("loggedIn");
+
+        if (loggedIn && user) {
+            navbar.innerHTML = `
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <span style="color:#0ff;font-weight:bold;">👤 ${user.username}</span>
+                <a href="#" onclick="logout()" class="highlight">Logout</a>
+            `;
+        } else {
+            navbar.innerHTML = `
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="login.html" class="highlight">Login</a>
+                <a href="signup.html" class="highlight">Signup</a>
+            `;
+        }
+
+        function logout() {
+            const user = JSON.parse(localStorage.getItem("user"));
+            const username = user?.username || "User";
+
+            localStorage.removeItem("user");
+            localStorage.removeItem("loggedIn");
+
+            alert(`👋 Goodbye, ${username}!`);
+            window.location.href = "index.html";
+        }
+
+        document.getElementById("commentForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const name = this.name.value;
+            const message = this.message.value;
+            const time = new Date().toLocaleString();
+
+            emailjs.send("service_drjh48n", "template_2iwx0mj", {
+                name,
+                message,
+                time
+            }).then(function () {
+                document.getElementById("commentStatus").textContent = "✅ Comment sent successfully!";
+                document.getElementById("commentForm").reset();
+            }, function (error) {
+                document.getElementById("commentStatus").textContent = "❌ Failed to send comment: " + error.text;
+            });
+        });
+    </script>
+</body>
+
+</html>
